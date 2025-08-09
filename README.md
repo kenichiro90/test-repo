@@ -1,40 +1,40 @@
-# Kanban Todo Application
+# かんばんTodoアプリケーション
 
-A simple, web-based Kanban-style Todo application built with Flask.
+Flaskで構築された、シンプルなWebベースのかんばん風Todoアプリケーションです。
 
-## Features
+## 主な機能
 
-- Create, move, and delete tasks.
-- Tasks can be categorized into "Todo", "In Progress", and "Done".
-- Add, update, and delete checklist items for each task.
-- Data is persistently stored in a SQLite database (`todos.db`).
+- タスクの作成、移動、削除
+- タスクを「Todo」、「In Progress」（作業中）、「Done」（完了）のカテゴリに分類
+- 各タスクにチェックリスト項目を追加、更新、削除
+- データはSQLiteデータベース（`todos.db`）に永続的に保存されます
 
-## Requirements
+## 必要なもの
 
 - Python 3.x
 - Flask
 
-## Setup and Usage
+## セットアップと使い方
 
-1.  **Clone the repository:**
+1.  **リポジトリをクローンする:**
     ```bash
-    git clone YOUR_REPOSITORY_URL
-    cd YOUR_REPOSITORY_DIRECTORY
+    git clone あなたのリポジトリURL
+    cd あなたのリポジトリのディレクトリ
     ```
 
-2.  **Install dependencies:**
-    It's recommended to use a virtual environment.
+2.  **依存関係をインストールする:**
+    仮想環境の使用を推奨します。
     ```bash
     python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    source venv/bin/activate  # Windowsの場合は `venv\Scripts\activate` を使用
     pip install -r requirements.txt
     ```
 
-3.  **Run the application:**
-    The application will automatically create and initialize the `todos.db` database file on the first run.
+3.  **アプリケーションを実行する:**
+    初回実行時に、`todos.db`というデータベースファイルが自動的に作成・初期化されます。
     ```bash
     python app.py
     ```
 
-4.  **Access the application:**
-    Open your web browser and go to `http://127.0.0.1:5000`.
+4.  **アプリケーションにアクセスする:**
+    Webブラウザを開き、`http://127.0.0.1:5000`にアクセスしてください。
