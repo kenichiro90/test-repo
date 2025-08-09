@@ -3,51 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
+    <title>Kanban Todo App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Todo App</h1>
-    <ul>
-        {% for todo in todos %}
-            <li class="{{ 'done' if todo.done else '' }}">
-                <div class="todo-main">
-                    <span>{{ todo.task }}</span>
-                    <div class="buttons">
-                        <form action="{{ url_for('update_todo', todo_id=todo.id) }}" method="post" style="display: inline;">
-                            <button type="submit">{{ 'Undo' if todo.done else 'Complete' }}</button>
-                        </form>
-                        <form action="{{ url_for('delete_todo', todo_id=todo.id) }}" method="post" style="display: inline;">
-                            <button type="submit">Delete</button>
+    <div class="app-container">
+        <h1>Kanban Board</h1>
+        <div class="add-todo-form">
+            <form action="/add" method="post">
+                <input type="text" name="task" placeholder="Enter a new task..." required>
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+
+        <div class="kanban-board">
+            <!-- Todo Column -->
+            <div class="kanban-column" id="todo-column">
+                <h2>Todo</h2>
+                {% for todo in todos_todo %}
+                <div class="kanban-card">
+                    <div class="card-header">
+                        <span>{{ todo.task }}</span>
+                        <form action="{{ url_for('move_todo', todo_id=todo.id) }}" method="post">
+                            <button type="submit" class="move-btn">▶</button>
                         </form>
                     </div>
+                    {% include 'checklist_partial.html' %}
                 </div>
-                {% if todo.checklist %}
-                <ul class="checklist">
-                    {% for item in todo.checklist %}
-                    <li class="{{ 'checked' if item.checked else '' }}">
-                        <form action="{{ url_for('update_checklist_item', todo_id=todo.id, item_index=loop.index0) }}" method="post" class="checklist-item-form">
-                            <input type="checkbox" {{ 'checked' if item.checked else '' }} onchange="this.form.submit()">
-                            <span>{{ item.item }}</span>
-                        </form>
-                        <form action="{{ url_for('delete_checklist_item', todo_id=todo.id, item_index=loop.index0) }}" method="post" class="delete-item-form">
-                            <button type="submit">Delete</button>
-                        </form>
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                <form class="checklist-form" action="{{ url_for('add_checklist_item', todo_id=todo.id) }}" method="post">
-                    <input type="text" name="item" placeholder="Add checklist item..." required>
-                    <button type="submit">Add Item</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
+                {% endfor %}
+            </div>
 
-    <form action="/add" method="post">
-        <input type="text" name="task" placeholder="Enter a new todo">
-        <button type="submit">Add Todo</button>
-    </form>
+            <!-- In Progress Column -->
+            <div class="kanban-column" id="inprogress-column">
+                <h2>In Progress</h2>
+                {% for todo in todos_inprogress %}
+                <div class="kanban-card">
+                    <div class="card-header">
+                        <span>{{ todo.task }}</span>
+                        <form action="{{ url_for('move_todo', todo_id=todo.id) }}" method="post">
+                            <button type="submit" class="move-btn">▶</button>
+                        </form>
+                    </div>
+                    {% include 'checklist_partial.html' %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Done Column -->
+            <div class="kanban-column" id="done-column">
+                <h2>Done</h2>
+                {% for todo in todos_done %}
+                <div class="kanban-card">
+                    <div class="card-header">
+                        <span>{{ todo.task }}</span>
+                        <form action="{{ url_for('delete_todo', todo_id=todo.id) }}" method="post">
+                           <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </div>
+                    {% include 'checklist_partial.html' %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
