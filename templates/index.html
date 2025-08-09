@@ -36,11 +36,11 @@
                     </li>
                     {% endfor %}
                 </ul>
+                {% endif %}
                 <form class="checklist-form" action="{{ url_for('add_checklist_item', todo_id=todo.id) }}" method="post">
                     <input type="text" name="item" placeholder="Add checklist item..." required>
                     <button type="submit">Add Item</button>
                 </form>
-                {% endif %}
             </li>
         {% endfor %}
     </ul>
