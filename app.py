@@ -23,6 +23,16 @@ def move_todo(todo_id):
             todo['status'] = 'done'
     return redirect(url_for('index'))
 
+@app.route('/move_back/<int:todo_id>', methods=['POST'])
+def move_todo_back(todo_id):
+    todo = find_todo_by_id(todo_id)
+    if todo:
+        if todo['status'] == 'done':
+            todo['status'] = 'inprogress'
+        elif todo['status'] == 'inprogress':
+            todo['status'] = 'todo'
+    return redirect(url_for('index'))
+
 @app.route('/add', methods=['POST'])
 def add_todo():
     task = request.form.get('task')
