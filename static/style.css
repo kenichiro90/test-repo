@@ -19,14 +19,68 @@ li {
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 5px;
+    display: block; /* Changed from flex */
+}
+
+li.done > .todo-main > span {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+.todo-main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
-li.done {
+/* Checklist styles */
+.checklist {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-top: 15px;
+}
+
+.checklist li {
+    background-color: #fdfdfd;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #eee;
+}
+
+.checklist li.checked span {
     text-decoration: line-through;
-    color: #aaa;
+    color: #bbb;
+}
+
+.checklist-item-form {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.checklist-item-form input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.delete-item-form {
+    margin: 0;
+}
+
+.delete-item-form button {
+    background-color: #f44336; /* A lighter red */
+    font-size: 12px;
+    padding: 4px 8px;
+}
+
+.checklist-form {
+    margin-top: 10px;
+    padding-left: 20px;
 }
 
 .buttons {
