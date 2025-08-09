@@ -41,10 +41,10 @@
                     <div class="card-header">
                         <span>{{ todo.task }}</span>
                         <div class="card-actions">
-                            <form action="{{ url_for('move_todo_back', todo_id=todo.id) }}" method="post" style="display: inline;">
+                            <form action="{{ url_for('move_todo_back', todo_id=todo.id) }}" method="post">
                                 <button type="submit" class="move-btn">◀</button>
                             </form>
-                            <form action="{{ url_for('move_todo', todo_id=todo.id) }}" method="post" style="display: inline;">
+                            <form action="{{ url_for('move_todo', todo_id=todo.id) }}" method="post">
                                 <button type="submit" class="move-btn">▶</button>
                             </form>
                         </div>
@@ -62,10 +62,10 @@
                     <div class="card-header">
                         <span>{{ todo.task }}</span>
                         <div class="card-actions">
-                            <form action="{{ url_for('move_todo_back', todo_id=todo.id) }}" method="post" style="display: inline;">
+                            <form action="{{ url_for('move_todo_back', todo_id=todo.id) }}" method="post">
                                 <button type="submit" class="move-btn">◀</button>
                             </form>
-                            <form action="{{ url_for('delete_todo', todo_id=todo.id) }}" method="post" style="display: inline;">
+                            <form action="{{ url_for('delete_todo', todo_id=todo.id) }}" method="post">
                                <button type="submit" class="delete-btn">Delete</button>
                             </form>
                         </div>

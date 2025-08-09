@@ -81,6 +81,11 @@ h1 {
     font-weight: 500;
 }
 
+.card-actions {
+    display: flex;
+    gap: 5px;
+}
+
 .move-btn, .delete-btn {
     background: #f4f5f7;
     border: none;
