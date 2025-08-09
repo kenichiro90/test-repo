@@ -40,9 +40,14 @@
                 <div class="kanban-card">
                     <div class="card-header">
                         <span>{{ todo.task }}</span>
-                        <form action="{{ url_for('move_todo', todo_id=todo.id) }}" method="post">
-                            <button type="submit" class="move-btn">▶</button>
-                        </form>
+                        <div class="card-actions">
+                            <form action="{{ url_for('move_todo_back', todo_id=todo.id) }}" method="post">
+                                <button type="submit" class="move-btn">◀</button>
+                            </form>
+                            <form action="{{ url_for('move_todo', todo_id=todo.id) }}" method="post">
+                                <button type="submit" class="move-btn">▶</button>
+                            </form>
+                        </div>
                     </div>
                     {% include 'checklist_partial.html' %}
                 </div>
@@ -56,9 +61,14 @@
                 <div class="kanban-card">
                     <div class="card-header">
                         <span>{{ todo.task }}</span>
-                        <form action="{{ url_for('delete_todo', todo_id=todo.id) }}" method="post">
-                           <button type="submit" class="delete-btn">Delete</button>
-                        </form>
+                        <div class="card-actions">
+                            <form action="{{ url_for('move_todo_back', todo_id=todo.id) }}" method="post">
+                                <button type="submit" class="move-btn">◀</button>
+                            </form>
+                            <form action="{{ url_for('delete_todo', todo_id=todo.id) }}" method="post">
+                               <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </div>
                     </div>
                     {% include 'checklist_partial.html' %}
                 </div>
